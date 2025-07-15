@@ -1,0 +1,25 @@
+### GENERAL DATASET CONSTANTS
+NAME: EvoMS
+RAW_PATH: data/raw_data/EvoMS
+UNPOPULATED_PATH: data/unpopulated_input/EvoMS
+INPUT_PATH: data/input/EvoMS
+SP_PATH: data/initial_superpoints/EvoMS
+PSEUDO_PATH: data/pseudo_labels/EvoMS
+N_CLASSES: 2
+LABELS: {
+  "0": foliage,
+  "1": wood
+}
+IGNORE_LABEL: -1 # label to ignore. Use -1 for None
+FILENAME_EXTENSION: .las
+### DATASET SPECIFIC CONSTANTS
+LABELED_IDS: [1, 2]
+IDS: [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+]
+# IDS of cylinders (r=4.2 m) that belong to the test set from each labeled plot
+TEST_SET: {
+  "1": [5, 4, 12, 13, 14, 27, 28, 29, 47, 48, 49, 50],
+  "2": [61, 60, 59, 58, 37, 36, 35, 34, 19, 18, 17, 7]
+}

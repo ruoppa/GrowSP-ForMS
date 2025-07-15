@@ -1,0 +1,97 @@
+### GROWSP PARAMETERS
+growsp: {
+  n_primitives: 300,
+  pretrain_epochs: 150, # Number of epochs to train before superpoints start growing
+  pretrain_max_iter: 14000, # Maximum number of iterations in the pretrain stage (training will stop if this is reached regardless of whether target number of epochs has been reached)
+  grow_epochs: 60, # Number of epochs to train once superpoints start growing
+  grow_max_iter: 40000, # Maximum number of iterations in the growth stage
+  n_sp_start: 1500,
+  n_sp_end: 1244,
+  w_rgb_merge: 0.2, # RGB value weight for merging superpoints
+  w_xyz_merge: 1, # xyz-coordinate weight for merging superpoints
+  w_norm_merge: 0.8, # point cloud normal weight for merging superpoints
+  w_other_merge: 1, # other features weight for merging superpoints
+  w_rgb_cluster: 1, # RGB weight when clustering primitives
+  w_pfh_cluster: 2, # PFH weight when clustering primitives
+  w_geof_cluster: 2, # Geometric feature weight when clustering primitives
+  use_percentage: False, # If True, instead of reducing the number of superpoints from n_sp_start to n_sp_end, we reduce from n_sp_start to n_sp_end% of n_sp_start (e.g. if n_sp_start = 80 and n_sp_end = 20, we reduce to 0.2*80=16)
+  cluster_interval: 10, # In training, cluster after every cluster_interval epochs. Model is saved simultaneously
+  log_interval: 5, # In training, show progress after every log_interval batches
+  n_overseg_classes: 14, # Number of classes in the oversegmentation
+  l_min: 0.55, # Linearity threshold for detecting wood classes from the oversegmentation
+  l_ind: 0 # Index of linearity among the available extra features
+}
+
+### DATALOADER PARAMETERS
+dataloader: {
+  extra_features: [linearity, PCA1, verticality, sphericity, planarity], # Names of possible extra features to use. Defaults are xyz, rgb determined sepparately
+  has_rgb: [True, True, True], # For each of the channels in red, green, blue, True if the respective data is available/should be used, False otherwise. For EvoMS, red = scanner 1, green = scanner 2, blue = scanner 3
+  augment_data: True, # If True, perform data augmentation on the data
+  train_batch_size: 16, # Batch size in training
+  train_workers: 10, # Number of workers for loading the data in training
+  cluster_workers: 4, # Number of workers for loading the data when clustering
+  eval_workers: 4, # Number of workers for loading the data when evaluating
+  sp_drop_threshold: 10, # Minimum number of points in a superpoint such that it's not dropped
+  clip_large_pc: False, # If True, clip large point clouds
+  clip_bound: 4 # When clip_large_pc is set to True, points further than clip_bound meters from the center of the point cloud are removed
+}
+
+### BACKBONE NEURAL NETWORK PARAMETERS
+backbone: {
+  NAME: Res16FPN18,
+  type: sparse,
+  voxel_size: 0.05,
+  kwargs: {
+    in_channels: 4,
+    out_channels: 128,
+    conv1_kernel_size: 5,
+    D: 3,
+    bn_momentum: 0.02
+  }
+}
+
+### LOSS PARAMETERS
+loss: {
+  NAME: CrossEntropyLoss,
+  kwargs: {
+    ignore_index: -1
+  }
+}
+
+### PRETRAIN STAGE OPTIMIZER PARAMETERS
+pretrain_optimizer: {
+  NAME: SGD,
+  kwargs: {
+    lr: 0.1,
+    momentum: 0.9,
+    dampening: 0.1,
+    weight_decay: 0.0001
+  }
+}
+
+### GROWING STAGE OPTIMIZER PARAMETERS
+grow_optimizer: {
+  NAME: SGD,
+  kwargs: {
+    lr: 0.05,
+    momentum: 0.9,
+    dampening: 0.1,
+    weight_decay: 0.0001
+  }
+}
+
+### PRETRAIN STAGE SCHEDULER PARAMETERS
+pretrain_scheduler: {
+  NAME: PolyLR,
+  kwargs: {
+    max_iter: 14000
+  }
+}
+
+### GROWING STAGE SCHEDULER PARAMETERS
+grow_scheduler: {
+  NAME: PolyLR,
+  kwargs: {
+    max_iter: 30000
+  }
+}

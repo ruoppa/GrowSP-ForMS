@@ -1,0 +1,28 @@
+{
+  "name": "growsp_forms",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  // If you have prebuilt the image, comment out the build and replace it with the below
+  // "image": "growsp_forms_dev",
+  // TODO: update the source directories to the location of the data and model weights on your machine
+  "mounts": [
+    "source=${localEnv:HOME}/data/EvoMS,target=/workspaces/GrowSP-ForMS/data/raw_data/EvoMS,type=bind",
+    "source=${localEnv:HOME}/data/model_weights/growsp_forms,target=/workspaces/GrowSP-ForMS/ckpt/EvoMS/ResNet16/full_model,type=bind",
+    "source=/etc/localtime,target=/etc/localtime,type=bind,readonly", // Mount localtime and timezone to have correct time within the container
+    "source=/etc/timezone,target=/etc/timezone,type=bind,readonly"
+  ],
+  "runArgs": [
+    "--gpus", "all",
+    "--shm-size=2g"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "remoteUser": "root"
+}

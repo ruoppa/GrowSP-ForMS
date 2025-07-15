@@ -1,0 +1,9 @@
+RADIUS: 4.2 # Radius of cylinders cut from the full point cloud in meters
+CIRCULAR_AREA: True # Set to True if the forest plot point cloud covers a circular area. If False, rectangular are is assumed
+PROCESS_ALL: False # If True, ignore plot ids in data set config and process all suitable data found in INPUT_PATH
+COMPUTE_NORMALS: True # If True, precompute point cloud normals
+COMPUTE_GEOMETRIC: True # If True, precompute geometric features
+GEOF_RADIUS: 0.35 # Radius used for computing the geometric features
+FEATURE_NAMES: [verticality, linearity, PCA1, sphericity, planarity, anisotropy] # Geometric features to compute
+SMOOTH_FEATURES: True
+N_NEIGHBORS: [20, 50, 100, 150]

@@ -1,0 +1,1 @@
+Download the trained model weights from [this link](https://drive.google.com/file/d/1grRaEznccYtH8cNLCGJMKbUsbUrYCt3Y/view?usp=sharing) and place (or mount) the checkpoint file `full_model_210_ckpt.pth` in this directory.

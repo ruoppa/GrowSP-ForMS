@@ -1,0 +1,21 @@
+### METHOD
+METHOD: cutpursuit # Set the method for superpoint creation. Should be one of [vccs, cutpursuit]
+VISUALIZE: False # If True, save .las files with superpoint labels for visualization purposes
+MAX_WORKERS: 8
+
+### CUTPURSUIT SPECIFIC PARAMETERS
+FEATURE_NAMES: [verticality, linearity, planarity]
+N_NEIGHBORS: 10
+SEARCH_RADIUS: 0.3
+MIN_POINTS: 5 # NOTE: do not set to less than 3
+LAMBDA: 0.1
+W_RGB: 8 # NOTE: not used in current implementation
+W_GEOF: 10
+APPLY_MERGING: False
+
+### VCCS SPECIFIC PARAMETERS
+#N_NEIGHBORS: 10 # required for computing BR and BP
+#W_XYZ: 0.4
+#W_NORMALS: 1
+#W_RGB: 0.2
+#VOXEL_SIZE: 0.1
