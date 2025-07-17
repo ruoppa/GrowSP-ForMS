@@ -1,4 +1,5 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2305.16404-b31b1b.svg)](https://arxiv.org/abs/2502.06227)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15913427.svg)](https://doi.org/10.5281/zenodo.15913427)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -8,21 +9,22 @@
 <div align="center">
   Lassi Ruoppa<sup>1,*</sup>, Oona Oinonen<sup>1</sup>, Josef Taher<sup>1</sup>, Matti Lehtomäki<sup>1</sup>, 
   Narges Takhtkeshha<sup>2,3</sup>, Antero Kukko<sup>1,4</sup>, Harri Kaartinen<sup>1</sup>, Juha Hyyppä<sup>1,4</sup>
-  
-  <div style="font-size: smaller; line-height: 1.5; margin-top: 8px;">
+
+  <small>
+    <br><br>
     <div><sup>1</sup><i>Department of Remote Sensing and Photogrammetry, Finnish Geospatial Research Institute FGI, The National Land Survey of Finland</i></div>
     <div><sup>2</sup><i>3D Optical Metrology (3DOM) Unit, Bruno Kessler Foundation (FBK)</i></div>
     <div><sup>3</sup><i>Department of Geodesy and Geoinformation, TU Wien</i></div>
     <div><sup>4</sup><i>Department of Built Environment, Aalto University</i></div>
-  </div>
+  </small>
 </div>
 <br><br>
 
-This repository contains the official source code for GrowSP-ForMS, an unsupervised deep learning framework for semantic segmentation of multispectral ALS forest point clouds. The model was introduced in the paper ["Unsupervised deep learning for semantic segmentation of multispectral LiDAR forest point clouds"](https://arxiv.org/abs/2502.06227) and is based on the [GrowSP](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_GrowSP_Unsupervised_Semantic_Segmentation_of_3D_Point_Clouds_CVPR_2023_paper.html) architecture. The multispectral data set associated with the paper is available on [Zenodo](link_here).
+This repository contains the official source code for GrowSP-ForMS, an unsupervised deep learning framework for semantic segmentation of multispectral ALS forest point clouds. The model was introduced in the paper ["Unsupervised deep learning for semantic segmentation of multispectral LiDAR forest point clouds"](https://arxiv.org/abs/2502.06227) and is based on the [GrowSP](https://openaccess.thecvf.com/content/CVPR2023/html/Zhang_GrowSP_Unsupervised_Semantic_Segmentation_of_3D_Point_Clouds_CVPR_2023_paper.html) architecture. The multispectral data set associated with the paper is available on [Zenodo](https://zenodo.org/records/15913427).
 
-<div style="font-size: 10px; line-height: 1.5; margin-top: 8px;">
+<small>
 <sup>*</sup>Corresponding author and maintainer of this repository.
-</div>
+</small>
 
 ## Table of contents
 
@@ -78,6 +80,7 @@ This repository contains the official source code for GrowSP-ForMS, an unsupervi
     7.1 [GPU Out-Of-Memory during training](#71-gpu-out-of-memory-during-training)
 8. [License](#8-license)
 9. [Acknowledgements](#9-acknowledgements)
+10. [Citation](#10-citation)
 
 </details>
 
@@ -497,3 +500,16 @@ Note that due to the licensing, you may **not** use code from [`growsp`](growsp)
 - The cut pursuit algorihtm used for constructing the intial superpoints is from the official [cut pursuit GitHub repository](https://github.com/loicland/cut-pursuit)
 - Code for computing superpoint boundary accuracy metrics the neighborhood graph was repurposed from the [Superpoint Graph GitHub repository](https://github.com/loicland/superpoint_graph)
 - Logic for point cloud sparsicification copied from the [SegmentAnyTree GitHub repository](https://github.com/SmartForest-no/SegmentAnyTree)
+
+## 10. Citation
+
+If you use the code in this repository for your research, please cite the associated paper:
+```
+@article{ruoppa2025unsupervised,
+    title={{Unsupervised deep learning for semantic segmentation of multispectral LiDAR forest point clouds}},
+    author={Ruoppa, Lassi and Oinonen, Oona and Taher, Josef and Lehtomäki, Matti and Takhtkeshha, Narges and Kukko, Antero and Kaartinen, Harri and Hyyppä, Juha},
+    journal={arXiv preprint arXiv:2502.06227},
+    year={2025},
+    doi={10.48550/arXiv.2502.06227}
+}
+```
