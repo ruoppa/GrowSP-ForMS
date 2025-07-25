@@ -11,7 +11,7 @@ MIN_POINTS: 5 # NOTE: do not set to less than 3
 LAMBDA: 0.1
 W_RGB: 8 # NOTE: not used in current implementation
 W_GEOF: 10
-APPLY_MERGING: False
+APPLY_MERGING: True
 
 ### VCCS SPECIFIC PARAMETERS
 #N_NEIGHBORS: 10 # required for computing BR and BP
